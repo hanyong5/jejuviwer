@@ -41,7 +41,6 @@ function RoomComp() {
       setBookingData(bookings);
     } catch (e) {
       console.error("예약 데이터 불러오기 오류", e);
-      alert("예약 데이터를 불러오는 중 오류가 발생했습니다.");
     }
   };
 
