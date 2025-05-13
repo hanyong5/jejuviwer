@@ -2,7 +2,8 @@ import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import RoomComp from "./pages/RoomComp";
 import HomeComp from "./pages/HomeComp";
-
+import UsageComp from "./pages/UsageComp";
+import EduComp from "./pages/EduComp";
 function App() {
   return (
     <>
@@ -15,11 +16,19 @@ function App() {
             <li>
               <Link to="/room">room</Link>
             </li>
+            <li>
+              <Link to="/usage">usage</Link>
+            </li>
+            <li>
+              <Link to="/edu">edu</Link>
+            </li>
           </ul>
         </nav>
         <Routes>
           <Route path="/" element={<HomeComp />}></Route>
           <Route path="/room" element={<RoomComp />}></Route>
+          <Route path="/usage" element={<UsageComp />}></Route>
+          <Route path="/edu" element={<EduComp />}></Route>
         </Routes>
       </div>
     </>
