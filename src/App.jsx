@@ -7,8 +7,8 @@ import EduComp from "./pages/EduComp";
 function App() {
   return (
     <>
-      <div className="container mx-auto">
-        <nav>
+      <div className="container mx-auto h-full relative px-4 py-4">
+        <nav className="absolute right-0 z-10">
           <ul className="flex justify-center items-center gap-4">
             <li>
               <Link to="/">Home</Link>

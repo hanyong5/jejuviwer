@@ -33,7 +33,8 @@ function RoomComp() {
   // 예약 데이터 불러오기
   const fetchBooking = async () => {
     try {
-      const url = `https://jejuckl.kr/rest/booking/list?type=BOO_TYPE002&strDate=${dateStr}`;
+      // const url = `https://jejuckl.kr/rest/booking/list?type=BOO_TYPE002&strDate=${dateStr}`;
+      const url = `rest/booking/list?type=BOO_TYPE002&strDate=${dateStr}`;
       const res = await axios.get(url, {
         headers: { Accept: "application/xml" },
       });
@@ -95,7 +96,10 @@ function RoomComp() {
 
   return (
     <>
-      <h3 className="mb-3 text-3xl font-bold">장소 및 공간대여</h3>
+      <h3 className="mb-3 text-3xl font-bold   border-b-3 border-gray-300 pb-3 w-full">
+        장소 및 공간대여
+      </h3>
+
       <div style={{ display: "flex" }}>
         {/* 왼쪽 메뉴 (방 목록) */}
         <div>
