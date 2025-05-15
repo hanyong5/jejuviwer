@@ -5,14 +5,13 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  // server: {
-  //   proxy: {
-  //     "/rest": {
-  //       target: "https://jejuckl.kr",
-  //       changeOrigin: true,
-  //       secure: false,
-
-  //     },
-  //   },
-  // },
+  server: {
+    proxy: {
+      "/rest": {
+        target: "https://jejuckl.kr",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 });
