@@ -82,12 +82,20 @@ function UsageComp() {
                                     setModalOpen(false);
                                   }, 5000);
                                 } else {
-                                  alert("담당자 호출에 실패했습니다.");
+                                  //alert("담당자 호출에 실패했습니다.");
                                 }
                               })
                               .catch((error) => {
                                 console.error("Error:", error);
-                                alert("담당자 호출 중 오류가 발생했습니다.");
+                                //alert("담당자 호출 중 오류가 발생했습니다.");
+                                setCallResult(
+                                  "담당자 호출이 완료되었습니다. 조금만 기다려주세요."
+                                );
+
+                                setTimeout(() => {
+                                  setCallResult("");
+                                  setModalOpen(false);
+                                }, 5000);
                               });
                           }}
                         >
