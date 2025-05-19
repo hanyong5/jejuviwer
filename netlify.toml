@@ -2,17 +2,21 @@
   command = "npm run build"
   publish = "dist" # Vite는 기본적으로 dist 폴더를 생성
 
-[[redirects]]
-  from = "/api/*"
-  to = "http://101.55.20.4:8000/api/:splat"
-  status = 200
-  force = true
 
 [[redirects]]
   from = "/rest/*"
   to = "https://jejuckl.kr/rest/:splat"
   status = 200
   force = true
+
+
+[[redirects]]
+  from = "/api/*"
+  to = "http://101.55.20.4:8000/api/:splat"
+  status = 200
+  force = true
+
+
 
 
 [[redirects]]
