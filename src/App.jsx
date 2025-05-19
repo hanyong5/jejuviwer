@@ -7,7 +7,7 @@ import EduComp from "./pages/EduComp";
 function App() {
   return (
     <>
-      <div className="container mx-auto h-full relative px-4 py-4">
+      <div className="container mx-auto h-full relative px-6 py-6">
         <nav className="absolute right-0 z-10">
           <ul className="flex justify-center items-center gap-4">
             <li>
@@ -25,10 +25,22 @@ function App() {
           </ul>
         </nav>
         <Routes>
-          <Route path="/" element={<HomeComp />}></Route>
-          <Route path="/room" element={<RoomComp />}></Route>
-          <Route path="/usage" element={<UsageComp />}></Route>
-          <Route path="/edu" element={<EduComp />}></Route>
+          <Route
+            path="/"
+            element={<HomeComp />}
+          ></Route>
+          <Route
+            path="/room"
+            element={<RoomComp />}
+          ></Route>
+          <Route
+            path="/usage"
+            element={<UsageComp />}
+          ></Route>
+          <Route
+            path="/edu"
+            element={<EduComp />}
+          ></Route>
         </Routes>
       </div>
     </>

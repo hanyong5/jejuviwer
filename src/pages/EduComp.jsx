@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import data from "./data.jsx";
-
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -44,11 +42,11 @@ function EduComp() {
 
   return (
     <>
-      <h3 className="mb-3 text-3xl font-bold  border-b-3 border-gray-300 pb-3 w-full absolute top-4 left-0">
+      <h3 className="mb-3 text-3xl font-bold  border-b-3 border-gray-300 pb-3 w-full absolute top-4 left-0 p-6">
         교육안내
       </h3>
 
-      <div className="h-full  flex justify-center items-center">
+      <div className="flex justify-center items-center absolute top-30 w-4/5">
         <div className="w-full">
           <Swiper
             modules={[Navigation]}
@@ -60,7 +58,10 @@ function EduComp() {
           >
             {viewData &&
               viewData.map((item) => (
-                <SwiperSlide key={item.id} className="p-2">
+                <SwiperSlide
+                  key={item.id}
+                  className="p-2"
+                >
                   <div className="gap-4 p-4 py-6 bg-white border-2 border-gray-300 rounded-lg shadow-lg flex flex-col items-center">
                     <img
                       src={item.imageUrl}
