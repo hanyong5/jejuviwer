@@ -12,6 +12,11 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+      "/api": {
+        target: "http://101.55.20.4:8000",
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 });

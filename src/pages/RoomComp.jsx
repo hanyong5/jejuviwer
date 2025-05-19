@@ -33,8 +33,8 @@ function RoomComp() {
   // 예약 데이터 불러오기
   const fetchBooking = async () => {
     try {
-      // const url = `https://jejuckl.kr/rest/booking/list?type=BOO_TYPE002&strDate=${dateStr}`;
-      const url = `rest/booking/list?type=BOO_TYPE002&strDate=${dateStr}`;
+      const baseUrl = import.meta.env.DEV ? "" : "https://jejuckl.kr";
+      const url = `${baseUrl}/rest/booking/list?type=BOO_TYPE002&strDate=${dateStr}`;
       const res = await axios.get(url, {
         headers: { Accept: "application/xml" },
       });

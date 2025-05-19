@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import data from "./data.jsx";
 
@@ -13,6 +13,13 @@ import "swiper/css/navigation";
 function EduComp() {
   const [modalOpen, setModalOpen] = useState(false);
   const [selected, setSelected] = useState(null);
+  const [viewData, setViewData] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/jeju_content_agency/get_education_info?pageNum=1")
+      .then((response) => response.json())
+      .then((data) => setViewData(data));
+  }, []);
 
   const openModal = (item) => {
     setSelected(item);
@@ -39,40 +46,41 @@ function EduComp() {
             onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}
           >
-            {data.map((item) => (
-              <SwiperSlide key={item.id} className="p-2">
-                <div className="gap-4 p-4 py-6 bg-white border-2 border-gray-300 rounded-lg shadow-lg flex flex-col items-center">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="w-full h-50 object-cover rounded-md mb-3"
-                  />
-                  <h4 className="text-xl font-bold mb-1">{item.title}</h4>
-                  {/* <p className="text-sm text-gray-600 mb-1">
+            {viewData &&
+              viewData.map((item) => (
+                <SwiperSlide key={item.id} className="p-2">
+                  <div className="gap-4 p-4 py-6 bg-white border-2 border-gray-300 rounded-lg shadow-lg flex flex-col items-center">
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="w-full h-50 object-cover rounded-md mb-3"
+                    />
+                    <h4 className="text-xl font-bold mb-1">{item.title}</h4>
+                    {/* <p className="text-sm text-gray-600 mb-1">
                     신청기간: {item.application}
                   </p> */}
-                  <p className="text-xl text-gray-600 mb-1 font-bold">
-                    {item.education}
-                  </p>
-                  <p className=" text-gray-600 mb-1 text-xl font-bold">
-                    {item.location}
-                  </p>
+                    <p className="text-xl text-gray-600 mb-1 font-bold">
+                      {item.education}
+                    </p>
+                    <p className=" text-gray-600 mb-1 text-xl font-bold">
+                      {item.location}
+                    </p>
 
-                  <p className=" text-gray-600 mb-1">
-                    <button
-                      className=" block px-8 py-2 bg-blue-500 rounded-2xl text-white text-xl  font-bold hover:bg-blue-600"
-                      onClick={() => openModal(item)}
-                    >
-                      교육내용확인
-                    </button>
-                  </p>
+                    <p className=" text-gray-600 mb-1">
+                      <button
+                        className=" block px-8 py-2 bg-blue-500 rounded-2xl text-white text-xl  font-bold hover:bg-blue-600"
+                        onClick={() => openModal(item)}
+                      >
+                        교육내용확인
+                      </button>
+                    </p>
 
-                  {/* <p className="text-sm text-gray-600 mb-1">
+                    {/* <p className="text-sm text-gray-600 mb-1">
                     정원: {item.capacity}명
                   </p> */}
-                </div>
-              </SwiperSlide>
-            ))}
+                  </div>
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       </div>

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 function UsageComp() {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <>
       <div className="container h-full">
@@ -32,9 +33,55 @@ function UsageComp() {
                 담당자 호출
               </h4>
               <p className="text-3xl flex items-center gap-3">
-                <button className="px-9 py-3 bg-blue-500 rounded-2xl text-white text-2xl font-bold hover:bg-blue-600">
+                <button
+                  className="px-9 py-3 bg-blue-500 rounded-2xl text-white text-2xl font-bold hover:bg-blue-600"
+                  onClick={() => setModalOpen(true)}
+                >
                   담당자 호출
                 </button>
+
+                {modalOpen && (
+                  <div
+                    className="fixed inset-0 z-50 flex items-center justify-center"
+                    style={{ backgroundColor: "rgba(0, 0, 0, 0.3)" }}
+                  >
+                    <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full mx-4">
+                      <h2 className="text-2xl font-bold mb-6">담당자 호출</h2>
+                      <p className="text-lg mb-6">담당자를 호출하시겠습니까?</p>
+                      <div className="flex justify-end gap-4">
+                        <button
+                          className="px-6 py-2 bg-gray-300 rounded-lg font-bold hover:bg-gray-400"
+                          onClick={() => setModalOpen(false)}
+                        >
+                          취소
+                        </button>
+                        <button
+                          className="px-6 py-2 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600"
+                          onClick={() => {
+                            fetch(
+                              "http://101.55.20.4:8000/api/jeju_content_agency/send_sms?message=담당자호출&phoneNumber=01063122268"
+                            )
+                              .then((response) => {
+                                console.log(response);
+                                if (response.resultCode === "00") {
+                                  alert("담당자 호출이 완료되었습니다.");
+                                  setModalOpen(false);
+                                } else {
+                                  alert("담당자 호출에 실패했습니다.");
+                                }
+                              })
+                              .catch((error) => {
+                                console.error("Error:", error);
+                                alert("담당자 호출 중 오류가 발생했습니다.");
+                              });
+                          }}
+                        >
+                          호출하기
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </p>
             </div>
             <div className=" h-full">
