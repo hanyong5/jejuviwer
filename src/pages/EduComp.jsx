@@ -46,7 +46,7 @@ function EduComp() {
         교육안내
       </h3>
 
-      <div className="flex justify-center items-center absolute top-30 w-4/5">
+      <div className="flex justify-center items-center absolute top-25 w-8/9 left-[50%] translate-x-[-50%]">
         <div className="w-full">
           <Swiper
             modules={[Navigation]}
