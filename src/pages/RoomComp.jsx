@@ -113,10 +113,11 @@ function RoomComp() {
                   border: "1px solid #ccc",
                   padding: 10,
                   margin: 2,
-                  width: "150px",
+                  width: "200px",
                   borderRadius: "16px",
+                  fontSize: "1.4em",
                   color: selectedRoom === room ? "#fff" : "#000",
-                  fontWeight: selectedRoom === room ? "bold" : "normal",
+                  fontWeight: "bold",
                 }}
                 onClick={() => setSelectedRoom(room)}
               >
