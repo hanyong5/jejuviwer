@@ -9,7 +9,7 @@ function UsageComp() {
       <h3 className="mb-3 text-3xl font-bold absolute  border-b-3 border-gray-300 pb-3 w-full">
         이용안내
       </h3>
-      <div className="flex justify-center items-center  absolute top-[50%] w-8/9 left-[50%] translate-[-50%]">
+      <div className="flex justify-center items-center  absolute top-[180px] w-8/9 left-[50%] translate-x-[-50%]">
         <div className="grid grid-cols-2 gap-x-20 gap-y-20 justify-center items-center">
           <div className=" h-full">
             <h4 className="text-4xl font-bold mb-4 flex gap-3 title">

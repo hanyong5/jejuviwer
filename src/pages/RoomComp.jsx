@@ -103,7 +103,7 @@ function RoomComp() {
         {/* 왼쪽 메뉴 (방 목록) */}
         <div>
           <div
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}
+            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}
           >
             {ROOMS.map((room) => (
               <button
