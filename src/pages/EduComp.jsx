@@ -18,9 +18,7 @@ function EduComp() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://101.55.20.4:8000/api/jeju_content_agency/get_education_info?pageNum=1"
-      )
+      .get("/api/jeju_content_agency/get_education_info?pageNum=1")
       .then((res) => {
         const today = new Date();
         const filtered = res.data.filter((item) => {
