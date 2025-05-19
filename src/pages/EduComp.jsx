@@ -9,6 +9,7 @@ import { Navigation } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+import axios from "axios";
 
 function EduComp() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -16,9 +17,22 @@ function EduComp() {
   const [viewData, setViewData] = useState([]);
 
   useEffect(() => {
-    fetch("/api/jeju_content_agency/get_education_info?pageNum=1")
-      .then((response) => response.json())
-      .then((data) => setViewData(data));
+    axios
+      .get(
+        "http://101.55.20.4:8000/api/jeju_content_agency/get_education_info?pageNum=1"
+      )
+      .then((res) => {
+        const today = new Date();
+        const filtered = res.data.filter((item) => {
+          if (!item.educationPeriod) return false;
+          const periodArr = item.educationPeriod.split("~");
+          if (periodArr.length < 2) return false;
+          const endStr = periodArr[1].trim().replace(/\./g, "-");
+          const endDate = new Date(endStr);
+          return endDate >= today;
+        });
+        setViewData(filtered);
+      });
   }, []);
 
   const openModal = (item) => {
@@ -32,7 +46,7 @@ function EduComp() {
 
   return (
     <>
-      <h3 className="mb-3 text-3xl font-bold  border-b-3 border-gray-300 pb-3 w-full">
+      <h3 className="mb-3 text-3xl font-bold  border-b-3 border-gray-300 pb-3 w-full absolute top-4 left-0">
         교육안내
       </h3>
 
@@ -42,7 +56,7 @@ function EduComp() {
             modules={[Navigation]}
             navigation
             spaceBetween={10}
-            slidesPerView={4}
+            slidesPerView={3}
             onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}
           >
@@ -51,18 +65,20 @@ function EduComp() {
                 <SwiperSlide key={item.id} className="p-2">
                   <div className="gap-4 p-4 py-6 bg-white border-2 border-gray-300 rounded-lg shadow-lg flex flex-col items-center">
                     <img
-                      src={item.img}
+                      src={item.imageUrl}
                       alt={item.title}
                       className="w-full h-50 object-cover rounded-md mb-3"
                     />
-                    <h4 className="text-xl font-bold mb-1">{item.title}</h4>
+                    <h4 className="text-xl font-bold mb-1 h-[70px] px-5">
+                      {item.title}
+                    </h4>
                     {/* <p className="text-sm text-gray-600 mb-1">
                     신청기간: {item.application}
                   </p> */}
                     <p className="text-xl text-gray-600 mb-1 font-bold">
-                      {item.education}
+                      {item.educationPeriod}
                     </p>
-                    <p className=" text-gray-600 mb-1 text-xl font-bold">
+                    <p className=" text-gray-600 mb-1 text font-bold">
                       {item.location}
                     </p>
 
@@ -91,11 +107,11 @@ function EduComp() {
           className="fixed inset-0 z-50 flex items-center justify-center"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.3)" }}
         >
-          <div className="bg-white rounded-lg shadow-lg flex w-full max-w-4xl mx-3 relative">
+          <div className="bg-white rounded-lg shadow-lg flex w-full max-w-3xl mx-3 relative">
             {/* 왼쪽: 이미지 */}
             <div className="w-1/3 flex items-center justify-center p-5">
               <img
-                src={selected.img}
+                src={selected.imageUrl}
                 alt={selected.title}
                 className="w-full h-90 object-cover rounded-md"
               />
@@ -104,23 +120,36 @@ function EduComp() {
             <div className="w-2/3 p-10 flex flex-col justify-between">
               <div>
                 <h2 className="text-2xl font-bold mb-5">{selected.title}</h2>
-                <p className="mb-2 text-gray-700 text-xl font-bold">
-                  신청기간: {selected.application}
+                <p className="mb-2 text-gray-700 flex gap-3 items-center">
+                  <div className="w-[100px] bg-blue-300 text-white font-bold rounded-md px-2 py-1 text-center">
+                    신청기간
+                  </div>
+                  <div className="text-xl font-bold">
+                    {selected.registrationPeriod}
+                  </div>
                 </p>
-                <p className="mb-2 text-gray-700 text-xl font-bold">
-                  교육기간: {selected.education}
+                <p className="mb-2 text-gray-700 flex gap-3 items-center">
+                  <div className="w-[100px] bg-blue-300 text-white font-bold rounded-md px-2 py-1 text-center">
+                    교육기간
+                  </div>
+                  <div className="text-xl font-bold">
+                    {selected.educationPeriod}
+                  </div>
                 </p>
-                <p className="mb-2 text-gray-700 text-xl font-bold">
-                  장소: {selected.location}
+                <p className="mb-2 text-gray-700  flex gap-3 items-center">
+                  <div className="w-[100px] bg-blue-300 text-white font-bold rounded-md px-2 py-1 text-center">
+                    장소
+                  </div>
+                  <div className="text-xl font-bold"> {selected.location}</div>
                 </p>
-                <p className="mb-2 text-gray-700 text-xl font-bold">
+                {/* <p className="mb-2 text-gray-700 text-xl font-bold">
                   대상: {selected.targetAudience}
-                </p>
-                <p className="mb-2 text-gray-700 text-xl font-bold">
-                  정원: {selected.capacity}명
-                </p>
-                <p className="mb-2 text-gray-700 text-xl font-bold">
-                  수강료: {selected.tuition}
+                </p> */}
+                <p className="mb-2 text-gray-700 flex gap-3 items-center">
+                  <div className="w-[100px] bg-blue-300 text-white font-bold rounded-md px-2 py-1 text-center">
+                    장소
+                  </div>
+                  <div>{selected.capacity}</div>
                 </p>
               </div>
               <button
