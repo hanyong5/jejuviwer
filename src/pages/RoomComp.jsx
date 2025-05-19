@@ -95,7 +95,7 @@ function RoomComp() {
 
   return (
     <>
-      <h3 className="mb-3 text-3xl font-bold   border-b-3 border-gray-300 pb-3 w-full">
+      <h3 className="mb-4 text-3xl font-bold   border-b-3 border-gray-300 pb-3 w-full">
         장소 및 공간대여
       </h3>
 

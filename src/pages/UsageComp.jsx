@@ -6,7 +6,7 @@ function UsageComp() {
   const [callResult, setCallResult] = useState("");
   return (
     <>
-      <h3 className="mb-3 text-3xl font-bold absolute  border-b-3 border-gray-300 pb-3 w-full">
+      <h3 className="mb-3 text-3xl font-bold  border-b-3 border-gray-300 pb-3 w-full absolute top-4 left-0 p-6">
         이용안내
       </h3>
       <div className="flex justify-center items-center  absolute top-[180px] w-8/9 left-[50%] translate-x-[-50%]">
