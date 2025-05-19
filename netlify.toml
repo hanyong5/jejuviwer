@@ -9,6 +9,13 @@
   force = true
 
 [[redirects]]
+  from = "/rest/*"
+  to = "https://jejuckl.kr/rest/:splat"
+  status = 200
+  force = true
+
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
