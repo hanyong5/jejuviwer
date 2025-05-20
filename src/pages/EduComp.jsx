@@ -8,13 +8,16 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import axios from "axios";
+import Loading from "../components/Loading";
 
 function EduComp() {
   const [modalOpen, setModalOpen] = useState(false);
   const [selected, setSelected] = useState(null);
   const [viewData, setViewData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get("/api/jeju_content_agency/get_education_info?pageNum=1")
       .then((res) => {
@@ -28,7 +31,8 @@ function EduComp() {
           return endDate >= today;
         });
         setViewData(filtered);
-      });
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   const openModal = (item) => {
@@ -39,6 +43,8 @@ function EduComp() {
     setModalOpen(false);
     setSelected(null);
   };
+
+  if (loading) return <Loading />;
 
   return (
     <>
@@ -58,10 +64,7 @@ function EduComp() {
           >
             {viewData &&
               viewData.map((item) => (
-                <SwiperSlide
-                  key={item.id}
-                  className="p-2"
-                >
+                <SwiperSlide key={item.id} className="p-2">
                   <div className="gap-4 p-4 py-6 bg-white border-2 border-gray-300 rounded-lg shadow-lg flex flex-col items-center">
                     <img
                       src={item.imageUrl}
