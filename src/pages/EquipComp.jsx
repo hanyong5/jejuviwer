@@ -4,20 +4,13 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 const ROOMS = [
-  "창작실 1",
-  "창작실 2",
-  "창작실 3",
-  "창작실 4",
-  "창작실 5",
-  "편집실 (Mac 1)",
-  "편집실 (Mac 2)",
-  "편집실 (IBM)",
-  "스튜디오1",
-  "스튜디오2",
-  "화상 회의실",
-  "회의실",
-  "다목적창작실",
-  "머들코지",
+  "레진 3D 프린터 캐리마 LM1",
+  "3D 프린터 큐비콘 Style NEO-A22C",
+  "레이저커팅기: 알디웍스(Rdworks)(콘텐츠공작소)",
+  "CNC라우터: 마하3(Mach 3)(콘텐츠공작소)",
+  "UV평판 플로터 (콘텐츠공작소)",
+  "멀티프레스/머그프레스 (콘텐츠공작소)",
+  "궁극 스프레이부스 S KSB-001 (콘텐츠공작소)",
 ];
 
 function RoomComp() {
@@ -35,7 +28,7 @@ function RoomComp() {
     try {
       // http://101.55.20.4:8000/api/jeju_content_agency/get_location_booking?type=BOO_TYPE003&strDate=2025-05-03
       // const url = `/rest/booking/list?type=BOO_TYPE002&strDate=${dateStr}`;
-      const url = `/api/jeju_content_agency/get_location_booking?type=BOO_TYPE002&strDate=${dateStr}`;
+      const url = `/api/jeju_content_agency/get_location_booking?type=BOO_TYPE003&strDate=${dateStr}`;
       const res = await axios.get(url);
       const bookings = res.data;
       console.log(bookings);
@@ -58,15 +51,13 @@ function RoomComp() {
   return (
     <>
       <h3 className="mb-4 text-3xl font-bold   border-b-3 border-gray-300 pb-3 w-full">
-        장소 및 공간대여
+        장비 대여
       </h3>
 
       <div style={{ display: "flex" }}>
         {/* 왼쪽 메뉴 (방 목록) */}
         <div>
-          <div
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}
-          >
+          <div className="flex flex-col w-[400px] gap-4 ">
             {ROOMS.map((room, i) => (
               <button
                 key={room}
@@ -75,9 +66,9 @@ function RoomComp() {
                   border: "1px solid #ccc",
                   padding: 10,
                   margin: 2,
-                  width: "200px",
+                  width: "100%",
                   borderRadius: "16px",
-                  fontSize: "1.4em",
+                  fontSize: "1em",
                   color: selectedRoom === room ? "#fff" : "#000",
                   fontWeight: "bold",
                 }}

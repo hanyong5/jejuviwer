@@ -4,6 +4,7 @@ import RoomComp from "./pages/RoomComp";
 import HomeComp from "./pages/HomeComp";
 import UsageComp from "./pages/UsageComp";
 import EduComp from "./pages/EduComp";
+import EquipComp from "./pages/EquipComp";
 function App() {
   return (
     <>
@@ -17,6 +18,9 @@ function App() {
               <Link to="/room">room</Link>
             </li>
             <li>
+              <Link to="/equip">equip</Link>
+            </li>
+            <li>
               <Link to="/usage">usage</Link>
             </li>
             <li>
@@ -25,22 +29,11 @@ function App() {
           </ul>
         </nav>
         <Routes>
-          <Route
-            path="/"
-            element={<HomeComp />}
-          ></Route>
-          <Route
-            path="/room"
-            element={<RoomComp />}
-          ></Route>
-          <Route
-            path="/usage"
-            element={<UsageComp />}
-          ></Route>
-          <Route
-            path="/edu"
-            element={<EduComp />}
-          ></Route>
+          <Route path="/" element={<HomeComp />}></Route>
+          <Route path="/room" element={<RoomComp />}></Route>
+          <Route path="/equip" element={<EquipComp />}></Route>
+          <Route path="/usage" element={<UsageComp />}></Route>
+          <Route path="/edu" element={<EduComp />}></Route>
         </Routes>
       </div>
     </>
