@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <div className="container mx-auto h-full relative px-6 py-6">
-        <nav className="absolute right-0 z-10">
+        <nav className="absolute right-0 z-10 hidden">
           <ul className="flex justify-center items-center gap-4">
             <li>
               <Link to="/">Home</Link>
