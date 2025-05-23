@@ -90,8 +90,8 @@ function RoomComp() {
           </div>
           {/* 오른쪽 예약 정보 */}
           <div style={{ marginLeft: 32, flex: 1 }}>
-            <div className="flex justify-between">
-              <h3 className="mb-3 font-bold">{selectedRoom}</h3>
+            <div className="flex justify-between  absolute right-10 top-7">
+              <h3 className="mb-3 text-3xl font-bold">{selectedRoom}</h3>
               {/* <p className="bg-blue-600 text-white px-3 py-1 rounded-md flex items-center">
                 {selectedDate.getMonth() + 1}월 예약 정보
               </p> */}

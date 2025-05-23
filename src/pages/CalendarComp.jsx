@@ -41,31 +41,36 @@ const Calendar = ({ filteredBookings, holidays }) => {
     return (
       <div
         key={formatted}
-        className={`border-b-2 border-gray-500 p-2 h-28 text-xs align-top overflow-auto ${
+        className={`border-b-2 border-gray-500 p-2 h-28 text-[0.8em] align-top overflow-auto ${
           isCurrentMonth ? "bg-white" : "bg-gray-200"
         } ${isToday ? "todayView" : ""}`}
       >
-        <div className={`font-bold ${textColor} text-right`}>{dayNumber}</div>
+        <div className={`font-bold ${textColor} text-right text-[1.3em]`}>
+          {dayNumber}
+        </div>
         {isHoliday(formatted) && (
-          <div className="text-[10px] text-red-500 text-right">
+          <div className="text-[1em] text-red-500 text-right">
             {getHolidayNames(formatted).join(", ")}
           </div>
         )}
-        {bookingsToday.map((booking, idx) => (
-          <div key={idx} className="mt-1 flex flex-col ">
-            <span className="font-bold text-right mb-1">
-              {booking.team.length > 3
-                ? booking.team.slice(0, 3) + "..."
-                : booking.team}
-            </span>
-            <span className="bg-amber-600 rounded text-white px-1  text-center">
-              {booking.hopeHours[0]}~
-              {booking.hopeHours.length > 1
-                ? booking.hopeHours[booking.hopeHours.length - 1]
-                : booking.hopeHours[0]}
-            </span>
-          </div>
-        ))}
+        {bookingsToday
+          .slice() // 원본 배열 보호
+          .sort((a, b) => b.hopeHours[0].localeCompare(a.hopeHours[0]))
+          .map((booking, idx) => (
+            <div key={idx} className="mt-1 flex items-center justify-end gap-1">
+              <span className="bg-blue-300 text-sm rounded text-white px-2  text-center">
+                {booking.hopeHours[0]}~
+                {booking.hopeHours.length > 1
+                  ? booking.hopeHours[booking.hopeHours.length - 1]
+                  : booking.hopeHours[0]}
+              </span>
+              <span className="font-bold">
+                {booking.team.length > 3
+                  ? booking.team.slice(0, 3) + "..."
+                  : booking.team}
+              </span>
+            </div>
+          ))}
       </div>
     );
   };
