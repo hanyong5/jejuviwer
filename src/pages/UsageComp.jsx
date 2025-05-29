@@ -93,7 +93,7 @@ function UsageComp() {
 
                   axios
                     .get(
-                      `/api/jeju_content_agency/send_sms?message=${new Date().toLocaleString()}_테미에서담당자호출함&phoneNumber=01063122268`
+                      `/api/jeju_content_agency/send_sms?message=${new Date().toLocaleString()}_테미에서담당자호출함&phoneNumber=01050586511`
                     )
                     .then((response) => {
                       console.log(response);
