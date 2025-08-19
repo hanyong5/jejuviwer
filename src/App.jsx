@@ -1,13 +1,13 @@
-import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
-import RoomComp from "./pages/RoomComp";
-import HomeComp from "./pages/HomeComp";
-import UsageComp from "./pages/UsageComp";
-import EduComp from "./pages/EduComp";
-import EquipComp from "./pages/EquipComp";
-import EduTwoComp from "./pages/EduTwoComp";
-import EquipTwoComp from "./pages/EquipTwoComp";
-import RoomTwoComp from "./pages/RoomTwoComp";
+import React from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
+import RoomComp from './pages/RoomComp';
+import HomeComp from './pages/HomeComp';
+import UsageComp from './pages/UsageComp';
+import EduComp from './pages/EduComp';
+import EquipComp from './pages/EquipComp';
+import EduTwoComp from './pages/EduTwoComp';
+import EquipTwoComp from './pages/EquipTwoComp';
+import RoomTwoComp from './pages/RoomTwoComp';
 
 function App() {
   return (

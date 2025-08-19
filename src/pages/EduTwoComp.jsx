@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
-import Loading from "../components/Loading";
-import CalendarComp from "./CalendarComp";
-import holyday from "./day";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import Loading from '../components/Loading';
+import CalendarComp from './CalendarComp';
+import holyday from './day';
 
 const ROOMS = [
-  "레진 3D 프린터 캐리마 LM1",
-  "3D 프린터 큐비콘 Style NEO-A22C",
-  "레이저커팅기: 알디웍스(Rdworks)(콘텐츠공작소)",
-  "CNC라우터: 마하3(Mach 3)(콘텐츠공작소)",
-  "UV평판 플로터 (콘텐츠공작소)",
-  "멀티프레스/머그프레스 (콘텐츠공작소)",
-  "궁극 스프레이부스 S KSB-001 (콘텐츠공작소)",
+  '레진 3D 프린터 캐리마 LM1',
+  '3D 프린터 큐비콘 Style NEO-A22C',
+  '레이저커팅기: 알디웍스(Rdworks)(콘텐츠공작소)',
+  'CNC라우터: 마하3(Mach 3)(콘텐츠공작소)',
+  'UV평판 플로터 (콘텐츠공작소)',
+  '멀티프레스/머그프레스 (콘텐츠공작소)',
+  '궁극 스프레이부스 S KSB-001 (콘텐츠공작소)',
 ];
 
 function RoomComp() {
@@ -24,7 +24,7 @@ function RoomComp() {
 
   const dateStr = `${selectedDate.getFullYear()}-${String(
     selectedDate.getMonth() + 1
-  ).padStart(2, "0")}-01`;
+  ).padStart(2, '0')}-01`;
   console.log(dateStr);
 
   // 예약 데이터 불러오기
@@ -37,7 +37,7 @@ function RoomComp() {
       console.log(bookings);
       setBookingData(bookings.items);
     } catch (e) {
-      console.error("예약 데이터 불러오기 오류", e);
+      console.error('예약 데이터 불러오기 오류', e);
     } finally {
       setLoading(false);
     }
@@ -61,7 +61,7 @@ function RoomComp() {
       {loading ? (
         <Loading />
       ) : (
-        <div style={{ display: "flex" }}>
+        <div style={{ display: 'flex' }}>
           {/* 왼쪽 메뉴 (방 목록) */}
           <div>
             <div className="flex flex-col w-[400px] gap-4 ">
@@ -69,15 +69,15 @@ function RoomComp() {
                 <button
                   key={room}
                   style={{
-                    background: selectedRoom === room ? "#32ADE6" : "#fff",
-                    border: "1px solid #ccc",
+                    background: selectedRoom === room ? '#32ADE6' : '#fff',
+                    border: '1px solid #ccc',
                     padding: 10,
                     margin: 2,
-                    width: "100%",
-                    borderRadius: "16px",
-                    fontSize: "1em",
-                    color: selectedRoom === room ? "#fff" : "#000",
-                    fontWeight: "bold",
+                    width: '100%',
+                    borderRadius: '16px',
+                    fontSize: '1em',
+                    color: selectedRoom === room ? '#fff' : '#000',
+                    fontWeight: 'bold',
                   }}
                   onClick={() => setSelectedRoom(room)}
                 >
