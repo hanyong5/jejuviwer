@@ -82,7 +82,7 @@ function CalendarWeekComp({
     return (
       <div
         key={`daybody-${formatted}`}
-        className={`p-2 h-[300px] overflow-auto ${
+        className={`p-2 h-[500px] overflow-auto flex flex-col gap-10 items-center justify-center ${
           format(day, "yyyy-MM-dd") === format(new Date(), "yyyy-MM-dd")
             ? "bg-blue-100"
             : (holidays && holidays[formatted]) || getDay(day) === 0
@@ -112,12 +112,12 @@ function CalendarWeekComp({
                   : booking.hopeHours[0]}
               </span>
               <span className="font-semibold text-2xl truncate self-end">
-                {booking.team.length > 5
+                {booking.team.length > 3
                   ? booking.team
                       .split("")
                       .map((char, idx) => (idx % 2 === 1 ? "*" : char))
                       .join("")
-                      .slice(0, 5) + "..."
+                      .slice(0, 3) + "..."
                   : booking.team
                       .split("")
                       .map((char, idx) => (idx % 2 === 1 ? "*" : char))
@@ -128,11 +128,11 @@ function CalendarWeekComp({
         {bookingsToday.length === 0 && (
           <>
             {holidays && holidays[formatted] ? (
-              <div className="text-red-700 text-xl flex justify-center items-center h-[280px] font-bold">
+              <div className="text-red-700 text-xl flex justify-center items-center h-[480px] font-bold">
                 {holidays[formatted].join(", ")}
               </div>
             ) : (
-              <div className="text-gray-400 text-xl h-[280px] font-bold flex justify-center items-center">
+              <div className="text-gray-400 text-xl h-[480px] font-bold flex justify-center items-center">
                 없음
               </div>
             )}
@@ -151,13 +151,19 @@ function CalendarWeekComp({
   return (
     <div>
       <div className="flex items-center justify-between mb-2">
-        <button onClick={handlePrevWeek} className="px-3 py-1 border rounded">
+        <button
+          onClick={handlePrevWeek}
+          className="px-3 py-1 border rounded"
+        >
           이전 주
         </button>
         <h3 className="text-xl font-bold">
           {format(weekStart, "yyyy.MM.dd")} ~ {format(weekEnd, "yyyy.MM.dd")}
         </h3>
-        <button onClick={handleNextWeek} className="px-3 py-1 border rounded">
+        <button
+          onClick={handleNextWeek}
+          className="px-3 py-1 border rounded"
+        >
           다음 주
         </button>
       </div>

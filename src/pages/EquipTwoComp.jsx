@@ -93,8 +93,14 @@ function EquipTwoComp() {
         </div>
         <div style={{ marginLeft: 32, flex: 1 }}>
           <div className="flex items-center justify-between mb-2">
-            <div className="text-lg font-semibold">{selectedRoom}</div>
-            <div className="flex items-center gap-2">
+            {/* <div className="text-lg font-semibold">{selectedRoom}</div> */}
+            <div className="flex justify-between absolute right-10 top-5">
+              <h3 className="mb-3 text-3xl font-bold">{selectedRoom}</h3>
+              {/* <p className="bg-blue-600 text-white px-3 py-1 rounded-md flex items-center">
+                {selectedDate.getMonth() + 1}월 예약 정보
+              </p> */}
+            </div>
+            <div className="flex items-center gap-2 hidden">
               <button
                 className="px-3 py-1 border rounded"
                 onClick={() =>
