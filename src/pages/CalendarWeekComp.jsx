@@ -57,7 +57,7 @@ function CalendarWeekComp({
     return (
       <div
         key={fullStr}
-        className={`p-2 border-b font-bold ${
+        className={`p-2 border-b font-bold  ${
           isHoliday(fullStr) || getDay(day) === 0
             ? "bg-pink-100"
             : isToday
@@ -65,9 +65,11 @@ function CalendarWeekComp({
             : ""
         }`}
       >
-        <div className={`flex items-center justify-between ${textColor}`}>
+        <div
+          className={`flex items-center  h-[50px] justify-between ${textColor}`}
+        >
           <span>{dayOfWeek}</span>
-          <span>{dateStr}</span>
+          <span className="text-3xl">{dateStr}</span>
         </div>
       </div>
     );
@@ -105,7 +107,7 @@ function CalendarWeekComp({
               key={idx}
               className="mt-1 flex flex-col items-center justify-between gap-2 "
             >
-              <span className="bg-blue-500 text-white text-sm rounded px-2 py-0.5 self-start">
+              <span className="bg-blue-450 text-white text-sm rounded px-2 py-0.5 self-start">
                 {booking.hopeHours[0]}~
                 {booking.hopeHours.length > 1
                   ? booking.hopeHours[booking.hopeHours.length - 1]
@@ -128,11 +130,11 @@ function CalendarWeekComp({
         {bookingsToday.length === 0 && (
           <>
             {holidays && holidays[formatted] ? (
-              <div className="text-red-700 text-xl flex justify-center items-center h-[480px] font-bold">
+              <div className="text-red-700 text-xl flex justify-center items-center h-[430px] font-bold">
                 {holidays[formatted].join(", ")}
               </div>
             ) : (
-              <div className="text-gray-400 text-xl h-[480px] font-bold flex justify-center items-center">
+              <div className="text-gray-430 text-xl h-[480px] font-bold flex justify-center items-center">
                 없음
               </div>
             )}
