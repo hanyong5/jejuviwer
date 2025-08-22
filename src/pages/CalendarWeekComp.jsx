@@ -84,7 +84,7 @@ function CalendarWeekComp({
     return (
       <div
         key={`daybody-${formatted}`}
-        className={`p-2 h-[500px] overflow-auto flex flex-col gap-10 items-center justify-center ${
+        className={`p-2 h-[430px] overflow-auto flex flex-col gap-10 items-center justify-center ${
           format(day, "yyyy-MM-dd") === format(new Date(), "yyyy-MM-dd")
             ? "bg-blue-100"
             : (holidays && holidays[formatted]) || getDay(day) === 0
@@ -107,13 +107,13 @@ function CalendarWeekComp({
               key={idx}
               className="mt-1 flex flex-col items-center justify-between gap-2 "
             >
-              <span className="bg-blue-450 text-white text-sm rounded px-2 py-0.5 self-start">
+              <span className="bg-blue-500 text-white text-sm rounded px-2 py-0.5 ">
                 {booking.hopeHours[0]}~
                 {booking.hopeHours.length > 1
                   ? booking.hopeHours[booking.hopeHours.length - 1]
                   : booking.hopeHours[0]}
               </span>
-              <span className="font-semibold text-2xl truncate self-end">
+              <span className="font-semibold text-2xl truncate">
                 {booking.team.length > 3
                   ? booking.team
                       .split("")
@@ -130,7 +130,7 @@ function CalendarWeekComp({
         {bookingsToday.length === 0 && (
           <>
             {holidays && holidays[formatted] ? (
-              <div className="text-red-700 text-xl flex justify-center items-center h-[430px] font-bold">
+              <div className="text-red-700 text-xl flex justify-center items-center h-[410px] font-bold">
                 {holidays[formatted].join(", ")}
               </div>
             ) : (
